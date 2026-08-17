@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Urban Gaz Limited · Commissioning System</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #F8FAFC;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-app-region: drag;
+    }
+    
+    .splash-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .logo-container {
+      width: 90px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #F15A24;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .progress-box {
+      width: 280px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      height: 6px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #F15A24, #0D6B6E);
+      border-radius: 100px;
+      transition: width 0.3s ease-out;
+    }
+
+    .status-text {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94A3B8;
+      letter-spacing: 0.5px;
+    }
+
+    .version-tag {
+      position: absolute;
+      bottom: 16px;
+      font-size: 10px;
+      color: #64748B;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="splash-card">
+    <div class="logo-container">
+      <img src="logo.png" alt="UGL" class="logo-img" onerror="this.src='../public/logo-square.png'">
+    </div>
+    <h1>Urban Gaz Limited</h1>
+    <div class="subtitle">OPE Commissioning Desktop Engine</div>
+
+    <div class="progress-box">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="status-text" id="statusText">Initializing Core Desktop Components...</div>
+  </div>
+
+  <div class="version-tag">v1.2.0 · Offline-First Desktop Edition</div>
+
+  <script>
+    const statusText = document.getElementById('statusText');
+    const progressBar = document.getElementById('progressBar');
+
+    const steps = [
+      { progress: 20, text: 'Initializing Engineering Modules...' },
+      { progress: 50, text: 'Loading Local Offline Database (IndexedDB)...' },
+      { progress: 80, text: 'Checking Database Synchronization Engine...' },
+      { progress: 100, text: 'Launching Urban Gaz Platform...' }
+    ];
+
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      if (currentStep < steps.length) {
+        progressBar.style.width = steps[currentStep].progress + '%';
+        statusText.innerText = steps[currentStep].text;
+        currentStep++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 450);
+  </script>
+</body>
+</html>

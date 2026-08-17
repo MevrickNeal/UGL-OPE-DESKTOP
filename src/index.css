@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+/* Google Fonts loaded via <link> in index.html */
+
+/* =========================================
+   URBAN GAZ LIMITED — DESIGN SYSTEM
+   Matching IoT Dashboard aesthetic
+   ========================================= */
+
+@theme {
+  /* Brand Colors — exact IoT Dashboard palette */
+  --color-brand-orange: #F15A24;
+  --color-brand-orange-light: #FADAD1;
+  --color-brand-green-light: #D5EBD7;
+  --color-brand-yellow-light: #FFF3CD;
+  --color-brand-card-filled: #E2EFE1;
+  --color-brand-card-reserve: #FDF1D8;
+  --color-brand-card-critical: #FBDCD3;
+  --color-brand-pill-filled: #B1D8B4;
+  --color-brand-pill-reserve: #FCE182;
+  --color-brand-pill-critical: #F6AB8F;
+  --color-brand-bg: #F8F9FA;
+  --color-brand-nav: #F9F9F9;
+  --color-brand-teal: #0D6B6E;
+  --color-brand-gold: #F5B731;
+
+  /* Font families */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #F8F9FA;
+  color: #333333;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar (IoT Dashboard style) */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* =========================================
+   MacOS Glassy Elements (IoT Dashboard)
+   ========================================= */
+.mac-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mac-glass:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.mac-glass:focus, .mac-glass:focus-within {
+  outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(241, 90, 36, 0.5);
+  box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================
+   Interactive Motions (IoT Dashboard)
+   ========================================= */
+.btn-press {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+  will-change: transform;
+}
+.btn-press:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.interactive-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+.interactive-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* =========================================
+   Stat Card (IoT Dashboard)
+   ========================================= */
+.stat-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   Navigation Items (IoT Dashboard)
+   ========================================= */
+.nav-item-active {
+  background-color: #D5EBD7;
+  color: #1f2937;
+  border: 1px solid #a7d5a9;
+}
+.nav-item-inactive {
+  background-color: transparent;
+  color: #64748b;
+  border: 1px solid transparent;
+}
+.nav-item-inactive:hover {
+  background-color: #FADAD1;
+  color: #1f2937;
+  border-color: #f6ab8f;
+}
+
+/* =========================================
+   Dropdown Menu (IoT Dashboard)
+   ========================================= */
+.mac-menu {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 6px;
+  transform-origin: top;
+  animation: dropdownFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: scaleY(0.95) translateY(-5px); }
+  to { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+/* =========================================
+   Splash Screen Animations
+   ========================================= */
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes loadingBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(241, 90, 36, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(241, 90, 36, 0); }
+}
+@keyframes pulseRed {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-scale { animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-loading-bar { animation: loadingBar 2.5s ease-in-out forwards; }
+.animate-shimmer { 
+  background: linear-gradient(90deg, transparent 25%, rgba(241,90,36,0.08) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+.animate-pulse-glow { animation: pulseGlow 2s infinite; }
+.animate-pulse-red { animation: pulseRed 1s ease-in-out infinite; }
+.animate-fade-in { animation: fadeIn 0.4s ease forwards; }
+
+/* Staggered fade-up for card grids */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* =========================================
+   Timer Display
+   ========================================= */
+.timer-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Circular progress ring */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* =========================================
+   Status Badges
+   ========================================= */
+.badge-pass {
+  background-color: #B1D8B4;
+  color: #1a3d1a;
+  font-weight: 700;
+}
+.badge-fail {
+  background-color: #F6AB8F;
+  color: #6b1600;
+  font-weight: 700;
+  animation: pulseRed 1.5s ease-in-out infinite;
+}
+.badge-pending {
+  background-color: #E2E8F0;
+  color: #475569;
+  font-weight: 600;
+}
+.badge-running {
+  background-color: #FCE182;
+  color: #5a3a00;
+  font-weight: 700;
+}
+.badge-inactive {
+  background-color: #FBDCD3;
+  color: #6b1600;
+  font-weight: 700;
+}
+
+/* =========================================
+   Form Inputs (Mac-glass style)
+   ========================================= */
+.input-field {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-field:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(241, 90, 36, 0.5);
+  box-shadow: 0 0 0 4px rgba(241, 90, 36, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+.input-field::placeholder {
+  color: #94a3b8;
+}
+
+/* Number inputs — larger for field use */
+.input-number-lg {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px 16px;
+}
+
+/* =========================================
+   Print Styles
+   ========================================= */
+@media print {
+  body { background: white !important; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .certificate-page {
+    page-break-after: always;
+    margin: 0;
+    padding: 40px;
+  }
+}
